@@ -1,38 +1,287 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>For Nova · 11.12</title>
-  <meta name="description" content="A private birthday signal from Teannyas to Nova." />
+  <meta name="description" content="A birthday letter from Teannyas to Nova." />
   <style>
     :root { --ink:#10131b; --paper:#f4efe6; --muted:#a4a9b5; --line:rgba(255,255,255,.12); --accent:#ffb56b; --pink:#ff8f9d; }
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--ink);color:var(--paper);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh;overflow-x:hidden}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.32;background-image:radial-gradient(circle at 20% 20%,#fff 0 1px,transparent 1.5px),radial-gradient(circle at 80% 14%,#fff 0 1px,transparent 1.4px),radial-gradient(circle at 62% 68%,#fff 0 1px,transparent 1.3px);background-size:220px 220px,310px 310px,270px 270px;mix-blend-mode:screen}
     .wrap{width:min(1080px,calc(100% - 40px));margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:28px 0;color:var(--muted);font:12px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.12em;text-transform:uppercase}.signal{display:flex;align-items:center;gap:9px}.dot{width:7px;height:7px;border-radius:50%;background:#92e7a9;box-shadow:0 0 15px #92e7a9}.hero{min-height:calc(100vh - 86px);display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center;padding:52px 0 90px}.eyebrow{color:var(--accent);font:13px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;margin:0 0 23px}.hero h1{font-family:Georgia,serif;font-size:clamp(54px,8vw,105px);font-weight:400;line-height:.9;letter-spacing:-.06em;margin:0 0 32px}.hero h1 em{color:var(--pink);font-style:italic}.lede{max-width:470px;color:#c8cbd3;font-size:17px;line-height:1.75;margin:0 0 30px}.meta{display:flex;gap:26px;color:var(--muted);font:12px ui-monospace,SFMono-Regular,Menlo,monospace}.meta strong{display:block;color:var(--paper);font-size:15px;margin-top:7px;font-weight:500}.panel{border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.025));padding:25px;box-shadow:0 30px 80px rgba(0,0,0,.25);backdrop-filter:blur(12px)}.terminal{font:12px ui-monospace,SFMono-Regular,Menlo,monospace;color:#b9bdc7}.terminal-head{display:flex;gap:7px;padding-bottom:22px;border-bottom:1px solid var(--line)}.terminal-head i{width:9px;height:9px;border-radius:50%;background:#ff8f9d}.terminal-head i:nth-child(2){background:#ffda85}.terminal-head i:nth-child(3){background:#92e7a9}.code{padding:25px 5px 20px;line-height:2}.code .key{color:#83c9ff}.code .val{color:#ffc17d}.code .comment{color:#737a8b}.unlock{width:100%;border:0;border-radius:13px;padding:16px 18px;background:var(--paper);color:var(--ink);font:600 13px ui-monospace,SFMono-Regular,Menlo,monospace;cursor:pointer;transition:.25s transform,.25s background}.unlock:hover{transform:translateY(-2px);background:#fff}.message{display:none;margin-top:60px;padding:42px 0 100px;border-top:1px solid var(--line)}.message.show{display:block;animation:rise .7s ease both}.message-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:60px}.message h2{font:400 clamp(38px,5vw,70px)/.95 Georgia,serif;letter-spacing:-.05em;margin:0}.letter{font:17px/2 Georgia,serif;color:#d8d7d3;max-width:600px}.letter p{margin:0 0 20px}.signature{color:var(--pink);font-style:italic;font-size:24px}.foot{padding:30px 0 40px;color:#777d8b;border-top:1px solid var(--line);font:11px ui-monospace,SFMono-Regular,Menlo,monospace;display:flex;justify-content:space-between;gap:20px}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@media(max-width:780px){.hero{grid-template-columns:1fr;gap:35px;padding-top:35px}.hero h1{font-size:clamp(60px,18vw,100px)}.message-grid{grid-template-columns:1fr;gap:30px}.topbar{padding-top:20px}.foot{display:block}.foot span{display:block;margin-top:8px}}
       .countdown{margin:4px 0 22px;padding:14px 15px;border:1px solid rgba(255,181,107,.25);border-radius:12px;background:rgba(255,181,107,.06)}.countdown-label{color:var(--accent);font-size:10px;letter-spacing:.14em;text-transform:uppercase}.countdown-time{margin-top:7px;color:var(--paper);font-size:22px;letter-spacing:.08em}.countdown-note{margin-top:5px;color:#777d8b;font-size:11px}.unlocked-note{display:none;color:#92e7a9;font-size:12px;margin:0 0 16px}.unlocked-note.show{display:block}</style>
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    .story-body, .birthday-letter {
+      width: min(100%, 690px);
+      max-width: none;
+      margin-inline: auto;
+    }
+    .story-scenes > div + div { margin-top: 2rem; }
+    .music-toggle {
+      position: fixed;
+      z-index: 2;
+      right: max(12px, env(safe-area-inset-right));
+      bottom: max(12px, env(safe-area-inset-bottom));
+      min-height: 44px;
+      padding: 0 .85rem;
+      border: 1px solid #805861;
+      border-radius: 999px;
+      background: #201a24;
+      color: #ffd0d6;
+      box-shadow: 0 4px 16px #0006;
+      font: .8rem/1.25 system-ui, sans-serif;
+      cursor: pointer;
+    }
+    .memory-photo { margin: 1.25rem 0 1.75rem; }
+    .memory-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .story-body .scene-date {
+      color: var(--accent);
+      font: .8rem/1.6 ui-monospace, monospace;
+      letter-spacing: .08em;
+    }
+    .birthday-letter {
+      margin-top: clamp(2rem, 5vw, 3.5rem);
+      padding-top: 2rem;
+      border-top: 1px solid #805861;
+    }
+    .signoff { color: #ffd0d6; font-size: 1.2em; }
+    .unlock:disabled { cursor: default; opacity: .55; transform: none; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+    @media (min-width: 781px) {
+      .hero {
+        min-height: calc(100svh - 70px);
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+        column-gap: clamp(28px, 5vw, 70px);
+      }
+    }
+    @media (min-width: 781px) and (max-height: 820px) {
+      .topbar { padding-block: 18px; }
+      .hero {
+        min-height: calc(100svh - 52px);
+        padding-block: 24px 40px;
+      }
+      .hero h1 {
+        font-size: clamp(54px, min(8vw, 12svh), 96px);
+        margin-bottom: 24px;
+      }
+      .hero .eyebrow { margin-bottom: 16px; }
+      .hero .lede { margin-bottom: 20px; }
+    }
+    @media (min-width: 781px) and (max-width: 960px) {
+      .message { padding-inline-end: 96px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .message.show { animation: none; }
+      .unlock { transition: none; }
+    }
+  </style>
 </head>
 <body>
   <main class="wrap">
-    <header class="topbar"><span class="signal"><i class="dot"></i> signal received</span><span>teannyas → nova / 11.12</span></header>
+    <header class="topbar"><span class="signal"><i class="dot"></i> a letter for Nova</span><span>teannyas → nova / 11.12</span></header>
     <section class="hero">
       <div>
         <p class="eyebrow">a small thing from a faraway place</p>
         <h1>Happy<br><em>birthday,</em><br>Nova.</h1>
-        <p class="lede">如果你看到这里，说明你已经成功破解了信里的小秘密。现在，请给我一点时间，把一颗来自雅加达以外的心意交到你手上。</p>
+        <p class="lede">Nova, I wrote you a birthday letter, all the way from Changsha.</p>
         <div class="meta"><span>DATE<strong>11 / 12</strong></span><span>STATUS<strong>waiting for you</strong></span></div>
       </div>
       <div class="panel terminal">
         <div class="terminal-head"><i></i><i></i><i></i></div>
-        <div class="code"><div><span class="comment">// private birthday protocol</span></div><div><span class="key">recipient</span>: <span class="val">"Nova"</span>,</div><div><span class="key">origin</span>: <span class="val">"Jakarta ↔ ChangSha"</span>,</div><div><span class="key">reason</span>: <span class="val">"because you exist"</span>,</div><div><span class="key">love</span>: <span class="val">true</span></div></div>
-        <div class="countdown" id="countdown"><div class="countdown-label">birthday signal unlocks in</div><div class="countdown-time" id="countdownTime">-- : -- : -- : --</div><div class="countdown-note" id="countdownNote">Jakarta time · 12 November</div></div><p class="unlocked-note" id="unlockedNote">signal unlocked · this one is yours</p><button class="unlock" id="unlock">[ click to open your birthday letter ]</button>
+        <div class="code"><div><span class="comment">// a birthday letter for Nova</span></div><div><span class="key">recipient</span>: <span class="val">"Nova"</span>,</div><div><span class="key">origin</span>: <span class="val">"Jakarta ↔ ChangSha"</span>,</div><div><span class="key">reason</span>: <span class="val">"because you exist"</span>,</div><div><span class="key">love</span>: <span class="val">true</span></div></div>
+        <div class="countdown" id="countdown">
+          <div class="countdown-label">your letter opens in</div>
+          <div class="countdown-time" id="countdownTime">-- : -- : -- : --</div>
+          <div class="countdown-note" id="countdownNote">Days : hours : minutes : seconds · 12 Nov, Jakarta</div>
+        </div>
+        <p class="unlocked-note" id="unlockedNote" role="status"></p>
+        <button class="unlock" id="unlock" aria-controls="message" aria-expanded="false" disabled>[ available on your birthday ]</button>
       </div>
     </section>
-    <section class="message" id="message">
-      <div class="message-grid"><h2>For the girl<br>who makes<br>distance small.</h2><div class="letter"><p>Nova，</p><p>生日快乐。写下这句话的时候，我在想，世界上有那么多城市、那么多时区、那么多正在发生的事情，可我还是很幸运，能在这个巨大的世界里遇见你。</p><p>愿你新的一岁有很多闪闪发光的日子，也有在普通日子里突然感到幸福的时刻。等下一次见面，我想把这句生日快乐，当面再说一遍。</p><p>在那之前，先把这颗小小的心意寄给你。</p><p class="signature">— Teannyas</p></div></div>
+    <section class="message" id="message" tabindex="-1" aria-label="Birthday letter">
+      <div class="story-body letter">
+        <p>Gen,</p>
+        <p>I wanted to write down a few things I remember about us. I’ve forgotten a lot of what we said, but some little things stuck. The cup of water in my hand while you danced. The courage it took me to say one little word later on: “Yes?”</p>
+        <div class="story-scenes">
+          <div>
+            <p>I was bartending in Roblox like usual, mixing drinks and handing them out. My friends were there too. You were up onstage playing music and making up your own dance with emotes. They said you were lip-syncing. I just stood there watching for a while, thinking, damn, she can dance.</p>
+            <p>I brought you a cup of water and said, “Nice dance.” I think you said, “Thanks.”</p>
+            <p>Another time at the bar, I tried calling you Egawa. I couldn’t get the pronunciation right, so it always came out sounding like <em>Eggwa</em>.</p>
+          </div>
+          <div>
+            <p>I was surprised to find out you played BRM5 too. I was a total newbie, so you showed me around, and we drove an infantry fighting vehicle together. I thought you were a guy and called you bro. Then you told me you were a girl.</p>
+            <p>Eventually I started calling you Gen.</p>
+          </div>
+          <div>
+            <p>I liked talking to you from the day we met. I remember sitting by the campfire with you on that chill map, talking for ages about what we liked and things we’d been through. I’ve forgotten most of the words. I still remember the campfire.</p>
+            <p>At first you were showing me how to play a game I barely knew. Before long, we were sitting by a fire talking about our lives. Whatever I’d logged on to do that day, I was happy if I got to talk to you.</p>
+            <p>One time we talked about bullying, and I got to see how brave you were. You said you used to be a total tomboy. I remember telling you how cute and cool I thought you were.</p>
+          </div>
+          <div>
+            <p>One time I logged on and thought I saw you say “Yes, honey?” in chat. I had no idea who you were talking to. I just remember suddenly going quiet and moving off to the side.</p>
+            <p>You noticed. I told you I wasn’t great with crowds. I think you said you’d help me get used to it, and then you introduced me to your friends.</p>
+            <p>I only told you about the crowd. I didn’t tell you why I’d gone quiet. You still noticed me drift away a little, and that stuck with me.</p>
+          </div>
+          <div>
+            <p class="scene-date">2026.07.17</p>
+            <p>We were on that same chill map. I’ve forgotten what we were talking about, but I remember it getting a little flirty. You called me <em>honey</em>. I worked up the courage to say, “Yes?” And just like that, we were together.</p>
+            <p>A few minutes later I was still a little dizzy. I asked, “So… we really did it?”</p>
+            <p>You said, “Yes, we did it.”</p>
+            <p>I still laugh thinking about that. It took me all that courage to say “Yes?” and a few minutes later I still had to ask if we were really together.</p>
+            <p class="scene-date">00:43 → 01:16 · Still no idea how sweet it got</p>
+          </div>
+          <div>
+            <p>After we got together, we kept playing music in-game and looking at your avatar together. I remember you saying “mi hou ~tiao!” for kiwi, and “hi hou” in your very own Gen English. You melted my heart.</p>
+            <figure class="memory-photo">
+              <img src="photos/together.jpg" width="1440" height="881" loading="lazy" alt="Our two Roblox avatars sitting side by side">
+            </figure>
+            <p>Once someone asked where we were from, and you told them we were from China and lived together. I was so happy I almost cried hhh.</p>
+            <p>We played some MTC, but mostly we played your favorite tank simulator. You drove and I was the gunner. You even said the most romantic thing was driving a tank with me.</p>
+            <p>One night you wanted me to hear your voice more clearly, so Cen gave you their old headset. That was when I found out you played War Thunder too. You said I looked like a kid who’d just been given candy. Okay, fair. Then there was that time we rode bikes yelling “Attack the D point!” hahaha.</p>
+            <figure class="memory-photo">
+              <img src="photos/point-d.jpg" width="1440" height="900" loading="lazy" alt="A game screenshot from our Point D memory, with an avatar in tall grass">
+            </figure>
+          </div>
+          <div>
+            <p>We were on voice chat in-game when you told me about the eruption. You were worried there might be a tsunami, and your home was close to the sea. You said that if anything happened to you, you wanted me to keep going and live my life like nothing had happened.</p>
+            <p>I started crying right there. You could hear me, and I remember you kept trying to comfort me. I was so far away. I looked up everything I could think of, just trying to find some way to help you.</p>
+          </div>
+          <div>
+            <p>Much later, I finally got TikTok working and added you. When I looked into the risk around where you lived, it seemed like your area probably wouldn’t be hit too hard. I could breathe a little easier after that.</p>
+            <p>Even before I saw your photo, I’d already thought about spending the rest of my life with you. You have such a graceful, pure heart, and you’re so much fun. You’re kind and brave, you liked me back, and you thought the most romantic thing was driving a tank with me. I felt like Jack in that movie scene. “Right then and there, Jack knew he had to marry Jenny.”</p>
+            <p>I still had no idea what you looked like. Whatever you looked like, whatever your body was like, whether you were healthy or sick, rich or poor, I wanted to spend the rest of my life with you.</p>
+            <p>Gen, can you imagine how happy I was? A girl that funny, that kind, that brave, and she liked me back. And she told me the most romantic thing in the world was driving a tank with me. I still smile every time I think about it.</p>
+            <p>And then, and then, I saw your photo for the first time.</p>
+            <p>It was like seeing a fairy from a dream, like a whole bright, gorgeous sky filling my eyes. You were so beautiful, and somehow so cute at the same time. You were already twenty-two, and you still had that high-school kind of cuteness. Oh my God, how can one lady be this cute?</p>
+          </div>
+          <div>
+            <p>One time someone was bothering you, so I went over. He said, “Hi.” I said, “Hi what?” He went, “Ow, sorry,” and left. The two of us just stood there laughing.</p>
+            <p>Later you made me an avatar. The tall one dressed in black, with wings and a black mask. The second it was ready, we rushed over to the chill map to try it out. You said you didn’t even know why you were so happy. You just couldn’t stop laughing.</p>
+            <figure class="memory-photo">
+              <img src="photos/new-avatar.jpg" width="1440" height="900" loading="lazy" alt="Our avatars together on the day we tried out the winged avatar">
+            </figure>
+          </div>
+          <div>
+            <p>One time you showed me your fridge out of nowhere, and there was some pretty expensive booze in there hahaha.</p>
+          </div>
+          <div>
+            <p>I remember our private BRM5 server, just the two of us sneaking and sniping our way through an entire enemy outpost. And I remember the first time you tried flying the stealth Black Hawk and crashed with me on board hahahaha.</p>
+            <p>Then there was the art we made in the tank simulator. Someone came along and wrecked our work, so we absolutely wiped the floor with them. And in Gakuran, we’d be fighting one minute and all over each other the next.</p>
+            <figure class="memory-photo">
+              <img src="photos/gakuran.jpg" width="1440" height="881" loading="lazy" alt="Our avatars standing together in Gakuran">
+            </figure>
+          </div>
+          <div>
+            <p>I still think about the Dragon Fruit you gave me in that game. I was really touched. Apart from my mom and grandma, you were the first girl in my life to give me a gift that precious.</p>
+          </div>
+          <div>
+            <p>Then there were all the little things we did together. Playing War Thunder Mobile, making avatars, and even doing a few bold things. Those details can stay between us hhh.</p>
+            <figure class="memory-photo">
+              <img src="photos/nice-night.jpg" width="1440" height="900" loading="lazy" alt="Our avatars together under a purple night sky">
+            </figure>
+            <p>I even tried flirting with you using that newlywed line from anime about dinner, a bath, or me. Only later did I find out it was supposed to be the girl’s line hahaha. And then you teased me and called me a femboy hhhh. Watashi wa Teannyas desu~!</p>
+          </div>
+        </div>
+      </div>
+      <article class="birthday-letter letter" aria-label="Birthday wishes">
+        <p>Sometimes I make you really happy. Sometimes I get on your nerves. I want to give you more reasons to smile and fewer reasons to cry.</p>
+        <p>I still think about that night. You’d had a hard time with your family, and after finally getting through all of that, you came back wanting to spend a lovely evening with me. I didn’t know what you’d been through. I should’ve been there to catch you and hold you. Instead I made you cry. I’m sorry, Gen. I want to listen to you more and hold you more, too.</p>
+        <p>You keep saying you’re a bad girl, that you don’t deserve me, that you’re awful, that the love you give me is toxic. Gen, to me, you really are the best, best girlfriend. Nobody’s perfect. You’re already enough. You really are.</p>
+        <figure class="memory-photo">
+          <img src="photos/my-love.jpg" width="1440" height="881" loading="lazy" alt="Our avatars close together beneath a starry sky">
+        </figure>
+        <p>And I still love that avatar of yours. Red eyes, short black hair, black leather jacket, fitted black skirt, and black stockings. I could look at her all day hhhh.</p>
+        <figure class="memory-photo">
+          <img src="photos/gen-black-avatar.jpg" width="1440" height="881" loading="lazy" alt="Gen’s red-eyed, black-haired avatar beside mine in the bar">
+        </figure>
+        <p>I still remember how it looked when we first met. You were dancing onstage. I watched for a bit and brought you a cup of water. How was I supposed to know I’d have all this to write after one little “Nice dance”?</p>
+        <p>I hope this year gives you time for the things you want to do, and room to rest when you’re tired. And I hope you have lots of moments like that day, when you’re so happy you can’t even say why and you just can’t stop laughing.</p>
+        <p>Today’s your birthday. Let’s have a good time together and be very proper about it. Well, mostly proper.</p>
+        <p>Let’s keep writing our story. Let’s love each other, be happy, and keep living well, okay, wife sama?</p>
+        <p>I feel so lucky to get to spend your birthday with you.</p>
+        <p class="signoff">Happy birthday, my dear little driver and succubus. Happy birthday, my Nova!!</p>
+        <p class="signature">— Teannyas</p>
+        <figure class="memory-photo">
+          <img src="photos/hug.jpg" width="1440" height="881" loading="lazy" alt="Our Roblox avatars hugging in a field at sunset">
+        </figure>
+      </article>
     </section>
     <footer class="foot"><span>built with too much feeling and just enough code</span><span>for nova / always</span></footer>
   </main>
-  <script>const target=new Date("2026-11-12T00:00:00+07:00");const countdown=document.getElementById("countdown"),countdownTime=document.getElementById("countdownTime"),countdownNote=document.getElementById("countdownNote"),unlock=document.getElementById("unlock"),message=document.getElementById("message"),unlockedNote=document.getElementById("unlockedNote");function unlockSignal(){countdown.style.display="none";unlockedNote.classList.add("show");unlock.disabled=false}function tick(){const diff=target-new Date();if(diff<=0){unlockSignal();return}const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),sec=Math.floor(diff%60000/1000);countdownTime.textContent=[d,h,m,sec].map((v,i)=>String(v).padStart(2,"0")+(i<3?" : ":"")).join("")}tick();setInterval(tick,1000);unlock.addEventListener("click",function(){if(new Date()<target){countdownNote.textContent="not yet, Nova · come back on your birthday ✦";return}message.classList.add("show");this.textContent="[ message decrypted ✓ ]";this.disabled=true;message.scrollIntoView({behavior:"smooth",block:"start"})});</script>
+  <audio id="birthday-song" loop preload="none" hidden>
+    <source src="audio/happy-birthday.wav" type="audio/wav">
+  </audio>
+  <button class="music-toggle" id="music-toggle" type="button" hidden>Play music</button>
+  <script>
+    const target = Date.parse("2026-11-12T00:00:00+07:00");
+    const countdown = document.getElementById("countdown");
+    const countdownTime = document.getElementById("countdownTime");
+    const unlock = document.getElementById("unlock");
+    const message = document.getElementById("message");
+    const unlockedNote = document.getElementById("unlockedNote");
+    const birthdaySong = document.getElementById("birthday-song");
+    const musicToggle = document.getElementById("music-toggle");
+    let timer;
+
+    function updateMusicButton() {
+      musicToggle.textContent = birthdaySong.paused ? "Play music" : "Pause music";
+    }
+
+    birthdaySong.addEventListener("play", updateMusicButton);
+    birthdaySong.addEventListener("pause", updateMusicButton);
+    musicToggle.addEventListener("click", () => {
+      if (birthdaySong.paused) {
+        birthdaySong.play().catch(updateMusicButton);
+      } else {
+        birthdaySong.pause();
+      }
+    });
+
+    function updateCountdown() {
+      const preview = location.protocol === "file:" && location.hash === "#preview";
+      const remaining = Math.ceil((target - Date.now()) / 1000);
+      if (preview || remaining <= 0) {
+        clearInterval(timer);
+        countdown.hidden = true;
+        unlockedNote.textContent = preview ? "local preview" : "your birthday letter is ready";
+        unlockedNote.classList.add("show");
+        unlock.textContent = "[ open your birthday letter ]";
+        unlock.disabled = false;
+        return;
+      }
+
+      const parts = [
+        Math.floor(remaining / 86400),
+        Math.floor(remaining / 3600) % 24,
+        Math.floor(remaining / 60) % 60,
+        remaining % 60
+      ];
+      countdownTime.textContent = parts.map(part => String(part).padStart(2, "0")).join(" : ");
+    }
+
+    timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+    window.addEventListener("hashchange", () => {
+      if (location.protocol === "file:") location.reload();
+    });
+    unlock.addEventListener("click", () => {
+      message.classList.add("show");
+      musicToggle.hidden = false;
+      birthdaySong.play().catch(updateMusicButton);
+      unlock.setAttribute("aria-expanded", "true");
+      unlock.textContent = "[ birthday letter opened ]";
+      message.focus();
+      unlock.disabled = true;
+    });
+  </script>
 </body>
 </html>
